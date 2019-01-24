@@ -1,17 +1,19 @@
 import os
 from tkinter import *
+import tkinter as Tk
 import pygame
-#import filetype
+from PIL import Image
+import filetype
 from tkinter.filedialog import askdirectory
-#from mutagen.id3 import ID3 #metaveriyi de getirir. şarkıların kaydettiğimiz adları yerine gerçek adları görünür.
+from mutagen.id3 import ID3 #metaveriyi de getirir. şarkıların kaydettiğimiz adları yerine gerçek adları görünür.
 
-anaekran = Tk()
+anaekran = Tk.Tk()
 anaekran.minsize(300, 300)
+anaekran.configure(background= "darkslateblue")
 anaekran.title("Müzik Çalar")
 
 muziklistesi = []
 index = 0
-
 
 def dosyasec():
     dosya = askdirectory()
@@ -46,28 +48,35 @@ def devam():
 dosyasec()
 
 
-ekran = Label(anaekran)
+ekran = Label(anaekran, background="darkslateblue")
+#self.foto = Image.open("Desktop\\forkasworld.jpg")
+#self.tkimage = ImageTk.PhotoImage(self.foto)
+#self.resim = Label(root, image=self.tkimage)
+#self.resim.grid()
 ekran.pack()
-
-liste = Listbox(ekran)
+#scrollbar = Scrollbar(liste, orient="vertical")
+#scrollbar.pack(side=RIGHT, fill=Y)
+liste = Listbox(ekran, width=20, height=10, background="azure2")
 liste.pack()
+#scrollbar.config(command=liste.yview)
+
+
 
 muziklistesi.reverse()
-
 for muzikler in muziklistesi:
     liste.insert(0,muzikler)
-muziklistesi.reverse() #sırayla çalsın diye
+ #sırayla çalsın diye
 
-ileributon = Button(ekran, text="sonraki şarkı", command=sonrakisarki)
+ileributon = Button(ekran, text="sonraki şarkı", command=sonrakisarki, background="lightgoldenrod")
 ileributon.pack()
 
-geributon = Button(ekran, text= "önceki şarkı", command=oncekisarki)
+geributon = Button(ekran, text= "önceki şarkı", command=oncekisarki, background= "mediumpurple")
 geributon.pack()
 
-durbuton = Button(ekran, text="durdur", command=durdur)
+durbuton = Button(ekran, text="durdur", command=durdur, background= "coral1")
 durbuton.pack()
 
-devambuton = Button(ekran, text="çalmaya devam et", command=devam)
+devambuton = Button(ekran, text="baştan çal", command=devam, background= "darkolivegreen1")
 devambuton.pack()
 
 anaekran.mainloop()
