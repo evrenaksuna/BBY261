@@ -1,5 +1,5 @@
 import sqlite3
-from tkinter import Tk, Label, Button, Text, Scrollbar, END, Entry, StringVar
+from tkinter import Tk, Label, Button, Text, Scrollbar, END, Entry
 
 class KutuphaneUygulamasi:
     def __init__(self, ana_pencere):
